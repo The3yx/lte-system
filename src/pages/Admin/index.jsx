@@ -4,10 +4,15 @@ import { UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/
 
 import { Link, Route, Switch, Redirect } from 'react-router-dom'
 
-import { secroutes } from "../../router"
+import Person from "../Person"
+import SystemConfig from "../SystemConfig"
+import ServerConnection from '../ServerConnection'
+import DataImport from "../DataImport"
+import ExportData from "../ExportData"
+import Community from "../Community"
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
-class Home extends Component {
+class Admin extends Component {
     constructor(props) {
         super(props);
         //react定义数据
@@ -35,7 +40,7 @@ class Home extends Component {
                                 style={{ height: '100%', borderRight: 0 }}
                             >
                                 <SubMenu key="sub1" icon={<UserOutlined />} title="系统管理">
-                                    <Menu.Item key="//serverconnection"><Link to="/serverconnection">数据库连接</Link></Menu.Item>
+                                    <Menu.Item key="/serverconnection"><Link to="/serverconnection">数据库连接</Link></Menu.Item>
                                     <Menu.Item key="/systemconfig"><Link to="/systemconfig">数据库配置</Link></Menu.Item>
                                 </SubMenu>
                                 <Menu.Item key="/person"><Link to="/person">用户管理</Link></Menu.Item>
@@ -63,11 +68,16 @@ class Home extends Component {
                                     minHeight: 736
                                 }}
                             >
-                                {
-                                    secroutes.map(item => {
-                                        return <Route key={item.path} path={item.path} component={item.component}></Route>
-                                    })
-                                }
+                                <Switch>
+                                    <Redirect exact={true} from="/" to="/person" />
+
+                                    <Route path="/serverconnection" component={ServerConnection} />
+                                    <Route path="/person" component={Person} />
+                                    <Route path="/dataimport" component={DataImport} />
+                                    <Route path="/exportdata" component={ExportData} />
+                                    <Route path="/community" component={Community} />
+                                    <Route path="/systemconfig" component={SystemConfig} />
+                                </Switch>
                             </Content>
                         </Layout>
                     </Layout>
@@ -76,4 +86,4 @@ class Home extends Component {
         )
     }
 }
-export default Home
+export default Admin
