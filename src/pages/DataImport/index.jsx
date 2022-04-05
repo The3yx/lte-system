@@ -6,20 +6,33 @@
 import React, { Component } from 'react'
 import { Upload, message, Button } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
+import axios from 'axios'
 import { Select } from 'antd';
 
 const { Option } = Select;
+
+const instance = axios.create({
+  baseURL:'http://82.157.100.28:8000/data',
+  headers:{
+    'content-type': 'application/x-www-form-urlencoded',
+  },
+  method:'post'
+})
+
+
 
 export default class DataImport extends Component {
 
 
     //TODO:表列表需要从服务端获取，应该写在willMount
     tableList = ["jack","lucy","tom"]
+    tableName = ""
     params = {
+        accept: ".csv,.xlsx",     //接受文件类型
         name: 'file',
-        action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',     //上传地址
-        headers: {
-          authorization: 'authorization-text',
+        action: '/upload',     //上传地址
+        data:{
+          table:this.tableName
         },
         onChange(info) {
           if (info.file.status !== 'uploading') {
@@ -33,9 +46,31 @@ export default class DataImport extends Component {
         },
       };
     
+    
+    customRequest = (config) =>{
+      const formData = new FormData();
+      formData.append('file',config.file);
+      formData.append('table',this.tableName);
+      axios({
+        method:"post",
+        url:"http://82.157.100.28:8000/data/upload",
+        headers:{
+          'content-type': 'application/x-www-form-urlencoded',
+        },
+        data:formData,
+      }).then(
+        data=>{
+          console.log(data)
+        }
+      )
 
+    }
+
+
+    
     //获取选择框输入
     getTable = (value)=>{
+      this.tableName = value
       console.log(`selectd ${value}`)
     }
 
