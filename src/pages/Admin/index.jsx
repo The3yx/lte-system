@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Layout, Menu, Breadcrumb } from 'antd';
 import { UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/icons';
-
+import { connect } from "react-redux";
 import { Link, Route, Switch, Redirect } from 'react-router-dom'
 
 import Person from "../Person"
@@ -20,6 +20,12 @@ class Admin extends Component {
         }
     }
     render() {
+        const user = this.props.user;
+        //如果内存没有存储user ==>当前没有登录
+        if(!user || !user._id){
+            //跳转至登录
+            return <Redirect to="/login" />;
+        }
         return (
             <div>
                 <Layout>
@@ -86,4 +92,4 @@ class Admin extends Component {
         )
     }
 }
-export default Admin
+export default connect((state) => ({ user: state.user }), {})(Admin);

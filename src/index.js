@@ -1,14 +1,21 @@
-//引入react核心库
 import React from 'react'
-//引入ReactDOM
 import ReactDOM from 'react-dom'
-
 import { Provider } from "react-redux";
-//
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
-//引入App
+
+import store from './redux/store';
+import {receiveUser} from './redux/actions'
+import storageUtils from "./utils/storageUtils";
 import App from './App'
+
+
+receiveUser(storageUtils.getUser());
+console.log(store.getState());
+
 ReactDOM.render(
-  <App />,
+  //Provider组件保证所有组件均可使用store中的状态
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById('root')
 )
