@@ -4,10 +4,10 @@
 
 import axios from 'axios';
 import {
-    SET_HEAD_TITLE,
-    RECEIVE_USER,
-    SHOW_ERROR_MSG,
-    RESET_USER,
+  SET_HEAD_TITLE,
+  RECEIVE_USER,
+  SHOW_ERROR_MSG,
+  RESET_USER,
 } from './constant'
 
 export const receiveUser = (user) => ({ type: RECEIVE_USER, user });
@@ -28,26 +28,26 @@ export const logout = () => {
 登陆的异步 action
 */
 export const login = (username, password) => async (dispatch) => {
-    //执行异步请求
-    //const result = await reqLogin(username, password);
-    const result = await axios({
-        method:'post',
-        url:'http://82.157.100.28:8000/login',
-        data:{
-            username:username,
-            password:password,
-        }
-    })
-    //如果成功，分发成功的同步action
-    if (result.status === 200) {
-      const user = result.data;
-      // memoryUtils.user = user;
-      //storageUtils.saveUser(user);
-      dispatch(receiveUser(user));
-      //登陆成功
-    } else {
-      //如果失败，分发成功的同步action
-      const msg = result.msg;
-      dispatch(showErrorMsg(msg));
+  //执行异步请求
+  //const result = await reqLogin(username, password);
+  const result = await axios.post(
+    '/login',
+    {
+      username: username,
+      password: password,
     }
-  };
+  )
+  //如果成功，分发成功的同步action
+  console.log(result.status)
+  if (result.status === 200) {
+    const user = result.data;
+    // memoryUtils.user = user;
+    //storageUtils.saveUser(user);
+    dispatch(receiveUser(user));
+    //登陆成功
+  } else {
+    //如果失败，分发成功的同步action
+    const msg = result.msg;
+    dispatch(showErrorMsg(msg));
+  }
+};

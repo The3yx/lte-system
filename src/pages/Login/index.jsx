@@ -14,7 +14,7 @@ import { login } from "../../redux/actions";
 class Login extends Component {
   onFinish = async (values) => {
     const { username, password } = values;
-    
+
     try {
       //调用异步请求，
       this.props.login(username, password);
@@ -150,4 +150,4 @@ class Login extends Component {
     );
   }
 }
-export default connect((state) => ({ user: state.user }), {})(Login);
+export default connect((state) => ({ user: state.user }), { login })(Login);
