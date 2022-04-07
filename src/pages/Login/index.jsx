@@ -9,7 +9,7 @@ import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { Redirect } from "react-router-dom";
 import "./index.less";
 import { connect } from "react-redux";
-//import { login } from "../../redux/actions";
+import { login } from "../../redux/actions";
 
 class Login extends Component {
   onFinish = async (values) => {
@@ -17,7 +17,7 @@ class Login extends Component {
     
     try {
       //调用异步请求，
-      //this.props.login(username, password);
+      this.props.login(username, password);
     } catch (error) {
       console.log("请求出错", error);
     }
