@@ -13,6 +13,7 @@ import { login } from "../../redux/actions";
 
 class Login extends Component {
   onFinish = async (values) => {
+    console.log('call onFinish')
     const { username, password } = values;
 
     try {
@@ -46,8 +47,8 @@ class Login extends Component {
   render() {
     //如果用户已经登陆,自动跳转到管理页面
     const user = this.props.user;
-    if (user && user._id) {
-      return <Redirect to="/home" />;
+    if (user.access_token) {
+      return <Redirect to="/admin" />;
     }
     const errorMsg = this.props.user.errorMsg;
 
@@ -141,7 +142,6 @@ class Login extends Component {
                 >
                   登录
                 </Button>
-                {/* Or <a href="">register now!</a> */}
               </Form.Item>
             </Form>
           </section>

@@ -13,18 +13,18 @@ import Community from "../Community"
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
 class Admin extends Component {
-    constructor(props) {
-        super(props);
-        //react定义数据
-        this.state = {
-        }
-    }
+     constructor(props) {
+         super(props);
+         //react定义数据
+         this.state = {
+         }
+     }
     render() {
         const user = this.props.user;
         //如果内存没有存储user ==>当前没有登录
-        if(!user || !user._id){
+        if(!user.access_token){
             //跳转至登录
-            return <Redirect to="/login" />;
+            return <Redirect to='/login' />;
         }
         return (
             <div>

@@ -1,6 +1,7 @@
 /**
  * @tmp文件，暂时不知道怎么归类
  */
+import storageUtils from '../utils/storageUtils';
 
 import axios from 'axios';
 import {
@@ -29,7 +30,6 @@ export const logout = () => {
 */
 export const login = (username, password) => async (dispatch) => {
   //执行异步请求
-  //const result = await reqLogin(username, password);
   const result = await axios.post(
     '/login',
     {
@@ -42,7 +42,7 @@ export const login = (username, password) => async (dispatch) => {
   if (result.status === 200) {
     const user = result.data;
     // memoryUtils.user = user;
-    //storageUtils.saveUser(user);
+    storageUtils.saveUser(user);
     dispatch(receiveUser(user));
     //登陆成功
   } else {

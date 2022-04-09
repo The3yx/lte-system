@@ -10,7 +10,6 @@ import App from './App'
 
 
 receiveUser(storageUtils.getUser());
-console.log(store.getState());
 
 ReactDOM.render(
   //Provider组件保证所有组件均可使用store中的状态
