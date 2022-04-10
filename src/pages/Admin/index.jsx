@@ -13,6 +13,7 @@ import Community from "../Community"
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
 class Admin extends Component {
+    //TODO:不知道加这个是什么作用@hzt
      constructor(props) {
          super(props);
          //react定义数据
@@ -22,6 +23,7 @@ class Admin extends Component {
     render() {
         const user = this.props.user;
         //如果内存没有存储user ==>当前没有登录
+        //TODO:有token还得发给邱桑鉴权，要不每次都能成功登录
         if(!user.access_token){
             //跳转至登录
             return <Redirect to='/login' />;

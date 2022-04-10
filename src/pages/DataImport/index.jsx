@@ -25,7 +25,7 @@ export default class DataImport extends Component {
 
 
     //TODO:表列表需要从服务端获取，应该写在willMount
-    tableList = ["jack","lucy","tom"]
+    tableList = ["tbcell","lucy","tom"]
     tableName = ""
     params = {
         accept: ".csv,.xlsx",     //接受文件类型
@@ -33,6 +33,30 @@ export default class DataImport extends Component {
         action: '/upload',     //上传地址
         data:{
           table:this.tableName
+        },
+        customRequest(config){
+          const data = config.data;
+          let formData = new FormData();
+          if(data){
+            Object.keys(data).forEach(key =>{
+              formData.append(key,data[key])
+            })
+          } 
+          
+          formData.append('file',config.file);
+          formData.append('table',this.tableName);
+          axios({
+            method:"post",
+            url:"/data/upload",
+            headers:{
+              "Content-Type": "multipart/form-data",
+            },
+            data:formData,
+          }).then(
+            response=>{
+              console.log(response)
+            }
+          )
         },
         onChange(info) {
           if (info.file.status !== 'uploading') {
@@ -45,26 +69,10 @@ export default class DataImport extends Component {
           }
         },
       };
-    
-    
-    customRequest = (config) =>{
-      const formData = new FormData();
-      formData.append('file',config.file);
-      formData.append('table',this.tableName);
-      axios({
-        method:"post",
-        url:"http://82.157.100.28:8000/data/upload",
-        headers:{
-          'content-type': 'application/x-www-form-urlencoded',
-        },
-        data:formData,
-      }).then(
-        data=>{
-          console.log(data)
-        }
-      )
 
-    }
+    
+    
+    
 
 
     
