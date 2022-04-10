@@ -48,16 +48,16 @@ class Admin extends Component {
                                 style={{ height: '100%', borderRight: 0 }}
                             >
                                 <SubMenu key="sub1" icon={<UserOutlined />} title="系统管理">
-                                    <Menu.Item key="/serverconnection"><Link to="/serverconnection">数据库连接</Link></Menu.Item>
-                                    <Menu.Item key="/systemconfig"><Link to="/systemconfig">数据库配置</Link></Menu.Item>
+                                    <Menu.Item key="/serverconnection"><Link to="/admin/serverconnection">数据库连接</Link></Menu.Item>
+                                    <Menu.Item key="/systemconfig"><Link to="/admin/systemconfig">数据库配置</Link></Menu.Item>
                                 </SubMenu>
                                 <Menu.Item key="/person"><Link to="/person">用户管理</Link></Menu.Item>
                                 <SubMenu key="sub3" icon={<NotificationOutlined />} title="数据管理">
-                                    <Menu.Item key="/dataimport"><Link to="/dataimport">数据导入</Link></Menu.Item>
-                                    <Menu.Item key="/exportdat"><Link to="/exportdat">数据导出</Link></Menu.Item>
+                                    <Menu.Item key="/dataimport"><Link to="/admin/dataimport">数据导入</Link></Menu.Item>
+                                    <Menu.Item key="/exportdat"><Link to="/admin/exportdat">数据导出</Link></Menu.Item>
                                 </SubMenu>
                                 <SubMenu key="sub4" icon={<NotificationOutlined />} title="业务查询">
-                                    <Menu.Item key="/community"><Link to="/community">小区</Link></Menu.Item>
+                                    <Menu.Item key="/community"><Link to="/admin/community">小区</Link></Menu.Item>
                                 </SubMenu>
                                 <SubMenu key="sub5" icon={<NotificationOutlined />} title="业务分析">
                                     <Menu.Item key="9">option9</Menu.Item>
@@ -77,14 +77,14 @@ class Admin extends Component {
                                 }}
                             >
                                 <Switch>
-                                    <Redirect exact={true} from="/" to="/person" />
+                                    <Redirect exact={true} from="/admin" to="/admin/person" />
 
-                                    <Route path="/serverconnection" component={ServerConnection} />
-                                    <Route path="/person" component={Person} />
-                                    <Route path="/dataimport" component={DataImport} />
-                                    <Route path="/exportdata" component={ExportData} />
-                                    <Route path="/community" component={Community} />
-                                    <Route path="/systemconfig" component={SystemConfig} />
+                                    <Route path="/admin/serverconnection" component={ServerConnection} />
+                                    <Route path="/admin/person" component={Person} />
+                                    <Route path="/admin/dataimport" component={DataImport} />
+                                    <Route path="/admin/exportdata" component={ExportData} />
+                                    <Route path="/admin/community" component={Community} />
+                                    <Route path="/admin/systemconfig" component={SystemConfig} />
                                 </Switch>
                             </Content>
                         </Layout>
