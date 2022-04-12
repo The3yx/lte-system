@@ -69,7 +69,7 @@ export default class ExportData extends Component {
         </Select>
         <button onClick={this.downloadTable}>downloadTable</button>
         <hr />
-        <a href={this.state.filePath} download="">aaa</a>
+        <a href={this.state.filePath} download="">点击下载文件</a>
       </div>
     )
   }
