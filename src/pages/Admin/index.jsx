@@ -19,7 +19,14 @@ class Admin extends Component {
          //react定义数据
          this.state = {
          }
-     }
+    }
+
+    componentWillUnmount(){
+        
+    }
+
+
+
     render() {
         const user = this.props.user;
         //如果内存没有存储user ==>当前没有登录
@@ -54,7 +61,7 @@ class Admin extends Component {
                                 <Menu.Item key="/person"><Link to="/person">用户管理</Link></Menu.Item>
                                 <SubMenu key="sub3" icon={<NotificationOutlined />} title="数据管理">
                                     <Menu.Item key="/dataimport"><Link to="/admin/dataimport">数据导入</Link></Menu.Item>
-                                    <Menu.Item key="/exportdat"><Link to="/admin/exportdat">数据导出</Link></Menu.Item>
+                                    <Menu.Item key="/exportdata"><Link to="/admin/exportdata">数据导出</Link></Menu.Item>
                                 </SubMenu>
                                 <SubMenu key="sub4" icon={<NotificationOutlined />} title="业务查询">
                                     <Menu.Item key="/community"><Link to="/admin/community">小区</Link></Menu.Item>

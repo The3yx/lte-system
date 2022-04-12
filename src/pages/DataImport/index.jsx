@@ -19,7 +19,7 @@ export default class DataImport extends Component {
     componentWillUnmount(){
 
     }
-
+    
     tableName = "";
     params = {
         accept: ".csv,.xlsx",     //接受文件类型
@@ -45,8 +45,8 @@ export default class DataImport extends Component {
             ({data: response}) => {
               config.onSuccess(response, config.file);
             }
-          ).
-          catch(config.onError);
+          )
+          .catch(config.onError);
         },
       };
     
