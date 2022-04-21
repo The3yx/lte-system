@@ -14,7 +14,7 @@ export default class ExportData extends Component {
 
 
   state = {
-    filePath:""
+    filePath:[]
   }
   //获取选择框输入
   getTable = (value)=>{
