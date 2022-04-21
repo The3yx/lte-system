@@ -15,7 +15,6 @@ class Login extends Component {
   onFinish = async (values) => {
     console.log('call onFinish')
     const { username, password } = values;
-
     try {
       //调用异步请求，
       this.props.login(username, password);
