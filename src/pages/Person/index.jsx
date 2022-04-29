@@ -106,5 +106,5 @@ class Person extends Component {
         )
     }
 }
-export default connect((state) => ({ user: state.user }))(Person);
+export default connect((state) => ({ userData: state.userData }))(Person);
 

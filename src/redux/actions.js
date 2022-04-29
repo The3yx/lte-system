@@ -11,7 +11,7 @@ import {
   RESET_USER,
 } from './constant'
 
-export const receiveUser = (user) => ({ type: RECEIVE_USER, user });
+export const receiveUser = (userData) => ({ type: RECEIVE_USER, userData });
 
 export const showErrorMsg = (errorMsg) => ({ type: SHOW_ERROR_MSG, errorMsg });
 
@@ -40,10 +40,10 @@ export const login = (username, password) => async (dispatch) => {
   //如果成功，分发成功的同步action
   console.log(result.status)
   if (result.status === 200) {
-    const user = result.data;
+    const userData = result.data;
     // memoryUtils.user = user;
-    storageUtils.saveUser(user);
-    dispatch(receiveUser(user));
+    storageUtils.saveUser(userData);
+    dispatch(receiveUser(userData));
     //登陆成功
   } else {
     //如果失败，分发成功的同步action
@@ -51,3 +51,8 @@ export const login = (username, password) => async (dispatch) => {
     dispatch(showErrorMsg(msg));
   }
 };
+
+//注册的异步action
+export const register = (username, password) =>async (dispatch) => {
+  
+}

@@ -7,7 +7,7 @@ import {SET_HEAD_TITLE,RECEIVE_USER,SHOW_ERROR_MSG,RESET_USER} from './constant'
 /* 用来管理头部标题的reducer函数 */
 const initTitle='首页'
 function headTitle(state=initTitle,action){
-    // console.log(SET_HEAD_TITLE)
+
     switch(action.type){
         case SET_HEAD_TITLE:
             return action.data
@@ -18,10 +18,11 @@ function headTitle(state=initTitle,action){
 
 /* 管理用户名的reducer */
 const initUser=storageUtils.getUser()
-function user(state=initUser,action){
+function userData(state=initUser,action){
     switch(action.type){
         case RECEIVE_USER:
-            return action.user
+            //console.log("验证")
+            return action.userData
         case SHOW_ERROR_MSG:
             const errorMsg = action.errorMsg
             return {...state,errorMsg} //不要直接修改原本的状态数据
@@ -42,5 +43,5 @@ function user(state=initUser,action){
 
 export default combineReducers({
     headTitle,
-    user
+    userData
 })

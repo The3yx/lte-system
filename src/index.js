@@ -8,8 +8,8 @@ import {receiveUser} from './redux/actions'
 import storageUtils from "./utils/storageUtils";
 import App from './App'
 
-
-receiveUser(storageUtils.getUser());
+//TODO：不懂下面这句是干嘛的
+//receiveUser(storageUtils.getUser());
 
 ReactDOM.render(
   //Provider组件保证所有组件均可使用store中的状态

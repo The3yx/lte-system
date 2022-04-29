@@ -6,7 +6,7 @@ import React, { Component } from "react";
 //import logo from "../../assets/image/head.jpg";
 import { Form, Input, Button } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
-import { Redirect } from "react-router-dom";
+import { NavLink,Redirect } from "react-router-dom";
 import "./index.less";
 import { connect } from "react-redux";
 import { login } from "../../redux/actions";
@@ -23,14 +23,12 @@ class Login extends Component {
     }
   };
   onFinishFailed = (values, errorFields, outOfDate) => {
-    //console.log("校验失败");
     values.errorFields.map((x) => {
       return console.log(x.errors);
     });
-    // //console.log('value------',values)
   };
   validatePwd = (rule, value) => {
-    // //console.log(value)
+
     if (!value) {
       return Promise.reject("密码必须输入");
     } else if (value.length < 4) {
@@ -45,12 +43,11 @@ class Login extends Component {
   };
   render() {
     //如果用户已经登陆,自动跳转到管理页面
-    const user = this.props.user;
-    if (user.access_token) {
+    const userData = this.props.userData;
+    if (userData.access_token) {
       return <Redirect to="/admin" />;
     }
-    const errorMsg = this.props.user.errorMsg;
-
+    const errorMsg = this.props.userData.errorMsg;
     return (
       <div>
         <div className="loginWrapper"></div>
@@ -141,6 +138,9 @@ class Login extends Component {
                 >
                   登录
                 </Button>
+                <NavLink to="/register">
+                  注册
+                </NavLink>
               </Form.Item>
             </Form>
           </section>
@@ -149,4 +149,4 @@ class Login extends Component {
     );
   }
 }
-export default connect((state) => ({ user: state.user }), { login })(Login);
+export default connect((state) => ({ userData: state.userData }), { login })(Login);

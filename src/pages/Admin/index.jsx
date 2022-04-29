@@ -32,10 +32,10 @@ class Admin extends Component {
 
 
     render() {
-        const user = this.props.user;
-        //如果内存没有存储user ==>当前没有登录
+        const userData = this.props.userData;
+        //如果内存没有存储user ==>当前没有登录  
         //TODO:有token还得发给邱桑鉴权，要不每次都能成功登录
-        if (!user.access_token) {
+        if (!userData.access_token) {
             //跳转至登录
             return <Redirect to='/login' />;
         }
@@ -105,4 +105,4 @@ class Admin extends Component {
         )
     }
 }
-export default connect((state) => ({ user: state.user }), {})(Admin);
+export default connect((state) => ({ userData: state.userData }), {})(Admin);

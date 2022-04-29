@@ -10,9 +10,9 @@ export default{
     /*
     保存user
     */
-   saveUser(user){
+   saveUser(userData){
     //    localStorage.setItem(USER_KEY,JSON.stringify(user))
-    store.set(USER_KEY,user)
+    store.set(USER_KEY,userData)
 },
    /*
    读取user
