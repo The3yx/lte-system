@@ -54,5 +54,20 @@ export const login = (username, password) => async (dispatch) => {
 
 //注册的异步action
 export const register = (username, password) =>async (dispatch) => {
-  
+  const result = await axios.post(
+    '/register',
+    {
+      username:username,
+      password:password
+    }
+  )
+
+  console.log(result.status)
+  //注册成功
+  if(result.status === 200){
+    console.log(result.data)
+  }else{
+    console.log(result.msg)
+  }
+
 }

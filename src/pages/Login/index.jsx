@@ -24,7 +24,7 @@ class Login extends Component {
   };
   onFinishFailed = (values, errorFields, outOfDate) => {
     values.errorFields.map((x) => {
-      return console.log(x.errors);
+      return alert(x.errors);
     });
   };
   validatePwd = (rule, value) => {
@@ -101,7 +101,7 @@ class Login extends Component {
               </Form.Item>
               <Form.Item
                 name="password"
-                initialValue="wxy"
+                initialValue="12345678"
                 rules={[
                   {
                     required: true,
