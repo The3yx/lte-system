@@ -24,15 +24,13 @@ class Admin extends Component {
         this.state = {
         }
     }
-
     componentWillUnmount() {
 
     }
-
-
-
     render() {
         const userData = this.props.userData;
+        console.log(userData)
+        console.log(2)
         //如果内存没有存储user ==>当前没有登录  
         //TODO:有token还得发给邱桑鉴权，要不每次都能成功登录
         if (!userData.access_token) {
@@ -62,7 +60,7 @@ class Admin extends Component {
                                     <Menu.Item key="/serverconnection"><Link to="/admin/serverconnection">数据库连接</Link></Menu.Item>
                                     <Menu.Item key="/systemconfig"><Link to="/admin/systemconfig">数据库配置</Link></Menu.Item>
                                 </SubMenu>
-                                <Menu.Item key="/person"><Link to="/person">用户管理</Link></Menu.Item>
+                                <Menu.Item key="/person" style={{ display: userData.is_admin == true ? 'block' : 'none' }} ><Link to="/person">用户管理</Link></Menu.Item>
                                 <SubMenu key="sub3" icon={<NotificationOutlined />} title="数据管理">
                                     <Menu.Item key="/dataimport"><Link to="/admin/dataimport">数据导入</Link></Menu.Item>
                                     <Menu.Item key="/exportdata"><Link to="/admin/exportdata">数据导出</Link></Menu.Item>
@@ -101,7 +99,7 @@ class Admin extends Component {
                         </Layout>
                     </Layout>
                 </Layout>
-            </div>
+            </div >
         )
     }
 }

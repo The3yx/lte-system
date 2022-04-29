@@ -8,12 +8,12 @@ import InfiniteScroll from 'react-infinite-scroll-component'; import { Button } 
 import axios from 'axios';
 import { connect } from "react-redux";
 import { InputNumber } from 'antd';
-const InfiniteListExample = () => {
+const InfiniteListExample = (token) => {
     const [data, setData] = useState([]);
     axios.get(
         '/admin/user', {
         headers: {
-            "authentication": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXB0IjoiemVydG93IiwiZXhwIjoxNjUwMzMwNDkzfQ.TgthETyGLjhGYGgCVwDtdP2WjUQ0FO62jjVix7-UkTM"
+            "authentication": token
         }
     }
     ).then(body => {
@@ -69,7 +69,7 @@ class Person extends Component {
         axios.post(
             `/admin/active/${this.active}`, {
             headers: {
-                "authentication": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXB0IjoiemVydG93IiwiZXhwIjoxNjUwMzMwNDkzfQ.TgthETyGLjhGYGgCVwDtdP2WjUQ0FO62jjVix7-UkTM"
+                "authentication": this.props.userData.access_token
             }
         }
         ).then(res => {
@@ -80,7 +80,7 @@ class Person extends Component {
         axios.delete(
             `/admin/active/${this.delete}`, {
             headers: {
-                "authentication": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXB0IjoiemVydG93IiwiZXhwIjoxNjUwMzMwNDkzfQ.TgthETyGLjhGYGgCVwDtdP2WjUQ0FO62jjVix7-UkTM"
+                "authentication": this.props.userData.access_token
             }
         }
         ).then(res => {
@@ -88,17 +88,18 @@ class Person extends Component {
         })
     }
     render() {
+        console.log(this.props.userData.access_token)
         axios.get(
             '/admin/user', {
             headers: {
-                "authentication": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXB0IjoiemVydG93IiwiZXhwIjoxNjUwMzMwNDkzfQ.TgthETyGLjhGYGgCVwDtdP2WjUQ0FO62jjVix7-UkTM"
+                "authentication": this.props.userData.access_token
             }
         }
         ).then((res) =>
             console.log(res.data[0]))
         return (
             <div>
-                <InfiniteListExample />
+                <InfiniteListExample token={this.props.userData.access_token} />
                 <InputNumber min={1} max={10} defaultValue={this.active} onChange={this.onChangeactive} />
                 <Button onClick={this.act} type="primary">激活</Button>
                 <InputNumber min={1} max={10} defaultValue={this.delete} onChange={this.onChangedelete} />
