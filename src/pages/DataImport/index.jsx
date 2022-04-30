@@ -14,16 +14,15 @@ const { Option } = Select;
 
 export default class DataImport extends Component {
 
-    //TODO:表列表需要从服务端获取，应该写在willMount
-    tableList = ["tbcell","lucy","tom"]
-    componentWillUnmount(){
-
-    }
+    //tableList写死
+    tableList = ["tbcell","tbkpi","tbprb","tbmrodata", "tbc2i"]
+    id=""
     
     tableName = "";
     params = {
         accept: ".csv,.xlsx",     //接受文件类型
         customRequest:(config)=>{
+          //console.log(config)
           const data = config.data;
           let formData = new FormData();
           formData.append('file',config.file);
@@ -42,11 +41,36 @@ export default class DataImport extends Component {
             }
           })
           .then(
-            ({data: response}) => {
-              config.onSuccess(response, config.file);
+            (res) => {
+              console.log("first",res)
+              this.id = res.data.id
+              axios({
+                method:"get",
+                url:"/data/upload/status",
+                params:{
+                  id:this.id
+                }
+              })
+              .then((res)=>{
+                console.log("second",res)
+                if(res.data.failed === true){
+                  config.onError()
+                  alert("上传失败",res.data.msg)
+                }else{
+                  config.onSuccess();
+                  alert("上传成功")
+                }
+                
+              })
+              .catch((err)=>{
+                console.log(err)
+              })
+              
             }
           )
-          .catch(config.onError);
+          .catch((err)=>{
+            console.log(err)
+          });
         },
       };
     
