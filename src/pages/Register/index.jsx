@@ -9,22 +9,41 @@
  import { NavLink,Redirect } from "react-router-dom";
  import "./index.less";
  import { connect } from "react-redux";
- import { register } from "../../redux/actions";
+ import axios from 'axios';
  
  class Register extends Component {
+    state = {isRegisterSuccess:false}
+
    onFinish = async (values) => {
      console.log('call onFinish')
      const { username, password, confirmPassword} = values;
      if(password!==confirmPassword){
       return alert("密码不一致")
      }
-     try {
-       //调用异步请求，
-       this.props.register(username, password);
-       //TODO:没有注册成功后跳转回Login
-     } catch (error) {
-       console.log("请求出错", error);
-     }
+     
+     axios.post(
+      '/register',
+      {
+        username: username,
+        password: password,
+      }
+    )
+    .then(
+      (res) =>{
+        console.log(res)
+        const isRegisterSuccess = this.state.isRegisterSuccess
+        //TODO:注册成功的提示，可有可无
+        this.setState({isRegisterSuccess:!isRegisterSuccess})
+      },
+      (err)=>{
+        console.log(err)
+      }
+    )
+    .catch(
+      (err)=>{
+        console.log(err)
+      }
+    )
    };
    onFinishFailed = (values, errorFields, outOfDate) => {
      values.errorFields.map((x) => {
@@ -47,11 +66,11 @@
    };
    render() {
      //如果用户已经登陆,自动跳转到管理页面
-     const userData = this.props.userData;
-     if (userData.access_token) {
-       return <Redirect to="/admin" />;
+     const {isRegisterSuccess} = this.state;
+     if (isRegisterSuccess) {
+       return <Redirect to="/login" />;
      }
-     const errorMsg = this.props.userData.errorMsg;
+     //const errorMsg = this.props.userData.errorMsg;
      return (
        <div>
          <div className="loginWrapper"></div>
@@ -61,9 +80,10 @@
              <h1>LTE-SYSTEM数据库管理系统</h1>
            </header>
            <section className="login-content">
-             <div className={errorMsg ? "error-msg show" : "error-msg"}>
+             {/** //TODO:如果还需要errorMsg,那可能需要把Register里的状态放入redux中，方便和errorMsg一起管理 */}
+             {/* {<div className={errorMsg ? "error-msg show" : "error-msg"}>
                {errorMsg}
-             </div>
+             </div>} */}
              <h2>用户注册</h2>
  
              <Form
@@ -173,5 +193,5 @@
      );
    }
  }
- export default connect((state) => ({userData:state.userData}), {register})(Register);
+ export default connect((state) => ({}), {})(Register);
  

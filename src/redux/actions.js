@@ -30,44 +30,27 @@ export const logout = () => {
 */
 export const login = (username, password) => async (dispatch) => {
   //执行异步请求
-  const result = await axios.post(
+  axios.post(
     '/login',
     {
       username: username,
       password: password,
     }
   )
-  //如果成功，分发成功的同步action
-  console.log(result.status)
-  if (result.status === 200) {
-    const userData = result.data;
-    // memoryUtils.user = user;
-    storageUtils.saveUser(userData);
-    dispatch(receiveUser(userData));
-    //登陆成功
-  } else {
-    //如果失败，分发成功的同步action
-    const msg = result.msg;
-    dispatch(showErrorMsg(msg));
-  }
-};
-
-//注册的异步action
-export const register = (username, password) =>async (dispatch) => {
-  const result = await axios.post(
-    '/register',
-    {
-      username:username,
-      password:password
+  .then(
+    (res) =>{
+      const userData = res.data
+      storageUtils.saveUser(userData);
+      dispatch(receiveUser(userData));
+    },
+    (err)=>{
+      console.log(err)
+      dispatch(showErrorMsg(err));
     }
   )
-
-  console.log(result.status)
-  //注册成功
-  if(result.status === 200){
-    console.log(result.data)
-  }else{
-    console.log(result.msg)
-  }
-
-}
+  .catch(
+    (err)=>{
+      console.log(err)
+    }
+  )
+};
