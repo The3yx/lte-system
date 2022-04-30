@@ -81,7 +81,25 @@ export default class Community extends Component {
         tableid: [],
         tablename: [],
     }
-    componentWillUnmount() {
+    componentWillMount() {
+        axios.get(
+            '/data/sector', {
+            params: {
+                "choice": "id"
+            }
+        }
+        ).then(body => {
+            this.setState({ tableid: body.data })
+        });
+        axios.get(
+            '/data/sector', {
+            params: {
+                "choice": "name"
+            }
+        }
+        ).then(body => {
+            this.setState({ tablename: body.data })
+        });
     }
 
     //获取选择框输入
@@ -107,25 +125,7 @@ export default class Community extends Component {
         });
     }
 
-    render() {
-        axios.get(
-            '/data/sector', {
-            params: {
-                "choice": "id"
-            }
-        }
-        ).then(body => {
-            this.setState({ tableid: body.data })
-        });
-        axios.get(
-            '/data/sector', {
-            params: {
-                "choice": "name"
-            }
-        }
-        ).then(body => {
-            this.setState({ tablename: body.data })
-        });
+    render() {        
         return (
             <div>
                 <Select
