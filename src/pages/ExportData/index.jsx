@@ -14,7 +14,7 @@ export default class ExportData extends Component {
 
 
   state = {
-    filePath:[]
+    filePaths:[]
   }
   //获取选择框输入
   getTable = (value)=>{
@@ -23,7 +23,7 @@ export default class ExportData extends Component {
   }
 
   tableName = "";
-  tableList = ["tbcell","lucy","tom"]
+  tableList = ["tbcell","tbkpi","tbprb","tbmrodata", "tbc2i"]
 
   downloadTable = ()=>{
     axios({
@@ -35,8 +35,9 @@ export default class ExportData extends Component {
     })
     .then(
       (res) =>{
+        
         console.log(res.data)
-        this.setState({filePath:"http://82.157.100.28:8000"+res.data[0]})
+        this.setState({filePaths:res.data})
       }
     )
     .catch(
@@ -48,6 +49,7 @@ export default class ExportData extends Component {
 
 
   render() {
+    const filePaths = this.state.filePaths
     return (
       <div>
         <Select
@@ -69,7 +71,18 @@ export default class ExportData extends Component {
         </Select>
         <button onClick={this.downloadTable}>downloadTable</button>
         <hr />
-        <a href={this.state.filePath} download="">点击下载文件</a>
+        <div>
+          点击下列链接
+          下载csv文件
+        </div>
+        {filePaths.map((fileObj)=>{
+          return (
+            <div key={fileObj}>
+              {/**a标签不使用proxy，所以必须正则表达式替换 */}
+              <a href={fileObj.replace("/data/download/file","http://82.157.100.28:8000/data/download/file")} download="">{fileObj}</a>
+            </div>
+          )
+        })}
       </div>
     )
   }
