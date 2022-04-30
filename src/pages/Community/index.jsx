@@ -19,12 +19,14 @@ class SearchInput extends React.Component {
     state = {
         data: [],
         value: undefined,
+        isLoading:false
     };
 
     handleChange = value => {
         this.setState({ value });
     };
     click = () => {
+        this.setState({isLoading:true})
         console.log(this.state)
         console.log(this.props.type)
         axios.get(
@@ -35,17 +37,22 @@ class SearchInput extends React.Component {
             }
         }
         ).then(body => {
+            this.setState({isLoading:false})
             console.log(body)
             var da = []
             for (var val in body.data) {
                 da.push(<Descriptions.Item label={val}>{body.data[val]}</Descriptions.Item>)
             }
             this.setState({ data: da })
+        })
+        .catch((err)=>{
+            console.log(err)
         });
         console.log(this.state)
     }
 
     render() {
+        const isLoading = this.state.isLoading
         const options = this.props.table.map(d => <Option value={d[this.props.type]}>{d[this.props.type]}</Option>);
         return (
             <div>
@@ -58,6 +65,7 @@ class SearchInput extends React.Component {
                     {options}
                 </Select>
                 <Button onClick={this.click}>查询</Button>
+                <div>{isLoading?"loading...":""}</div>
                 <Descriptions style={{ display: this.state.data == [] ? 'none' : 'block' }} title="小区信息">
                     {this.state.data}
                 </Descriptions></div>
