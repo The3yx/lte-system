@@ -14,6 +14,9 @@ import ServerConnection from '../ServerConnection'
 import DataImport from "../DataImport"
 import ExportData from "../ExportData"
 import Community from "../Community"
+import Enodeb from "../Enodeb"
+import Kpi from "../Kpi"
+import Prb from "../Prb"
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
 class Admin extends Component {
@@ -66,7 +69,10 @@ class Admin extends Component {
                                     <Menu.Item key="/exportdata"><Link to="/admin/exportdata">数据导出</Link></Menu.Item>
                                 </SubMenu>
                                 <SubMenu key="sub4" icon={<NotificationOutlined />} title="业务查询">
-                                    <Menu.Item key="/community"><Link to="/admin/community">小区</Link></Menu.Item>
+                                    <Menu.Item key="/community"><Link to="/admin/community">小区配置信息查询</Link></Menu.Item>
+                                    <Menu.Item key="/enodeb"><Link to="/admin/enodeb">基站eNodeB信息查询</Link></Menu.Item>
+                                    <Menu.Item key="/kpi"><Link to="/admin/kpi">小区KPI指标信息查询</Link></Menu.Item>
+                                    <Menu.Item key="/prb"><Link to="/admin/prb">PRB信息统计与查询</Link></Menu.Item>
                                 </SubMenu>
                                 <SubMenu key="sub5" icon={<NotificationOutlined />} title="业务分析">
                                     <Menu.Item key="9">option9</Menu.Item>
@@ -93,6 +99,9 @@ class Admin extends Component {
                                     <Route path="/admin/dataimport" component={DataImport} />
                                     <Route path="/admin/exportdata" component={ExportData} />
                                     <Route path="/admin/community" component={Community} />
+                                    <Route path="/admin/kpi" component={Kpi} />
+                                    <Route path="/admin/enodeb" component={Enodeb} />
+                                    <Route path="/admin/prb" component={Prb} />
                                     <Route path="/admin/systemconfig" component={SystemConfig} />
                                 </Switch>
                             </Content>
