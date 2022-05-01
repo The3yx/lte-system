@@ -3,41 +3,34 @@
 @time:4.29 19:38
 */
 import React, { Component } from 'react'
-import { Upload, message, Button } from 'antd';
-import { UploadOutlined } from '@ant-design/icons';
+import { Button } from 'antd';
 import axios from 'axios'
 import { Select } from 'antd';
-
-import jsonp from 'fetch-jsonp';
-import qs from 'qs';
-import { Descriptions, Badge } from 'antd';
+import { Descriptions } from 'antd';
 const { Option } = Select;
-
-let timeout;
-let currentValue;
 class SearchInput extends React.Component {
     state = {
         data: [],
         value: undefined,
-        isLoading:false
+        isLoading: false
     };
 
     handleChange = value => {
         this.setState({ value });
     };
     click = () => {
-        this.setState({isLoading:true})
+        this.setState({ isLoading: true })
         console.log(this.state)
         console.log(this.props.type)
         axios.get(
             '/data/sector/detail', {
             params: {
-                "choice": this.props.type == 'SECTOR_ID' ? "id" : "name",
+                "choice": this.props.type === 'SECTOR_ID' ? "id" : "name",
                 "name_or_id": this.state.value
             }
         }
         ).then(body => {
-            this.setState({isLoading:false})
+            this.setState({ isLoading: false })
             console.log(body)
             var da = []
             for (var val in body.data) {
@@ -45,9 +38,9 @@ class SearchInput extends React.Component {
             }
             this.setState({ data: da })
         })
-        .catch((err)=>{
-            console.log(err)
-        });
+            .catch((err) => {
+                console.log(err)
+            });
         console.log(this.state)
     }
 
@@ -65,8 +58,8 @@ class SearchInput extends React.Component {
                     {options}
                 </Select>
                 <Button onClick={this.click}>查询</Button>
-                <div>{isLoading?"loading...":""}</div>
-                <Descriptions style={{ display: this.state.data == [] ? 'none' : 'block' }} title="小区信息">
+                <div>{isLoading ? "loading..." : ""}</div>
+                <Descriptions style={{ display: this.state.data === [] ? 'none' : 'block' }} title="小区信息">
                     {this.state.data}
                 </Descriptions></div>
         );
@@ -125,7 +118,7 @@ export default class Community extends Component {
         });
     }
 
-    render() {        
+    render() {
         return (
             <div>
                 <Select
@@ -136,7 +129,7 @@ export default class Community extends Component {
                     <Option key='id' value='id'>id</Option>
                     <Option key='name' value='name'>name</Option>
                 </Select>
-                <SearchInput table={this.state.tableName == "id" ? this.state.tableid : this.state.tablename} type={this.state.tableName == "id" ? 'SECTOR_ID' : 'SECTOR_NAME'} placeholder="input search text" style={{ width: 200 }} />
+                <SearchInput table={this.state.tableName === "id" ? this.state.tableid : this.state.tablename} type={this.state.tableName === "id" ? 'SECTOR_ID' : 'SECTOR_NAME'} placeholder="input search text" style={{ width: 200 }} />
 
             </div>
         )
