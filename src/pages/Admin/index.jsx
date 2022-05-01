@@ -17,8 +17,15 @@ import Community from "../Community"
 import Enodeb from "../Enodeb"
 import Kpi from "../Kpi"
 import Prb from "../Prb"
+import C2I from '../C2I';
+
+
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
+
+
+
+
 class Admin extends Component {
     //TODO:不知道加这个是什么作用@hzt
     constructor(props) {
@@ -75,7 +82,7 @@ class Admin extends Component {
                                     <Menu.Item key="/prb"><Link to="/admin/prb">PRB信息统计与查询</Link></Menu.Item>
                                 </SubMenu>
                                 <SubMenu key="sub5" icon={<NotificationOutlined />} title="业务分析">
-                                    <Menu.Item key="9">option9</Menu.Item>
+                                    <Menu.Item key="/C2I"><Link to="/admin/C2I">主邻小区干扰分析</Link></Menu.Item>
                                     <Menu.Item key="10">option10</Menu.Item>
                                     <Menu.Item key="11">option11</Menu.Item>
                                     <Menu.Item key="12">option12</Menu.Item>
@@ -103,6 +110,7 @@ class Admin extends Component {
                                     <Route path="/admin/enodeb" component={Enodeb} />
                                     <Route path="/admin/prb" component={Prb} />
                                     <Route path="/admin/systemconfig" component={SystemConfig} />
+                                    <Route path="/admin/C2I" component={C2I} />
                                 </Switch>
                             </Content>
                         </Layout>

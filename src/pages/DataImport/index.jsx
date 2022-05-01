@@ -17,8 +17,8 @@ export default class DataImport extends Component {
     //tableList写死
     tableList = ["tbcell","tbkpi","tbprb","tbmrodata", "tbc2i"]
     id=""
-    
     tableName = "";
+    
     params = {
         accept: ".csv,.xlsx",     //接受文件类型
         customRequest:(config)=>{
@@ -54,8 +54,9 @@ export default class DataImport extends Component {
               .then((res)=>{
                 console.log("second",res)
                 if(res.data.failed === true){
+                  console.log(res.data)
                   config.onError()
-                  alert("上传失败",res.data.msg)
+                  alert("上传失败\n"+res.data.msg)
                 }else{
                   config.onSuccess();
                   alert("上传成功")

@@ -81,7 +81,7 @@ export default class Community extends Component {
         tableid: [],
         tablename: [],
     }
-    componentWillMount() {
+    componentDidMount() {
         axios.get(
             '/data/sector', {
             params: {

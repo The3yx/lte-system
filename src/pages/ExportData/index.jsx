@@ -14,29 +14,32 @@ export default class ExportData extends Component {
 
 
   state = {
-    filePaths:[]
+    filePaths:[],
+    tableName:"",
+    tableList:["tbcell","tbkpi","tbprb","tbmrodata", "tbc2i"]
   }
   //获取选择框输入
   getTable = (value)=>{
-    this.tableName = value
+    this.setState({tableName:value})
+    //this.tableName = value
+    console.log(this.state.tableName)
     console.log(`selectd ${value}`)
   }
 
-  tableName = "";
-  tableList = ["tbcell","tbkpi","tbprb","tbmrodata", "tbc2i"]
+  
 
   downloadTable = ()=>{
     axios({
       method:'get',
       url:'/data/download',
       params:{
-        table:"tbcell"
+        table:this.state.tableName
       }
     })
     .then(
       (res) =>{
         
-        console.log(res.data)
+        console.log(res)
         this.setState({filePaths:res.data})
       }
     )
@@ -60,7 +63,7 @@ export default class ExportData extends Component {
           onChange={this.getTable}
           >
           {
-            this.tableList.map((item,index)=>{
+            this.state.tableList.map((item,index)=>{
               return(
                 <Option key={index} value={item}>
                   {item}
