@@ -7,8 +7,10 @@ import { Button } from 'antd';
 import axios from 'axios'
 import { Select } from 'antd';
 import { Descriptions } from 'antd';
+import { Table, Tag, Space } from 'antd';
 const { Option } = Select;
 class SearchInput extends React.Component {
+
     state = {
         data: [],
         value: undefined,
@@ -31,12 +33,8 @@ class SearchInput extends React.Component {
         }
         ).then(body => {
             this.setState({ isLoading: false })
-            console.log(body)
-            var da = []
-            for (var val in body.data) {
-                da.push(<Descriptions.Item label={val}>{body.data[val]}</Descriptions.Item>)
-            }
-            this.setState({ data: da })
+            console.log(body.data)
+            this.setState({ data: body.data })
         })
             .catch((err) => {
                 console.log(err)
@@ -45,8 +43,15 @@ class SearchInput extends React.Component {
     }
 
     render() {
+        var columns = []
+        for (var j in this.state.data[0]) {
+            columns.push({ title: j, dataIndex: j, key: j })
+        }
         const isLoading = this.state.isLoading
-        const options = this.props.table.map(d => <Option value={d[this.props.type]}>{d[this.props.type]}</Option>);
+        var s = this.props.table.map(d => d[this.props.type])
+        s = new Set(s)
+        s = [...s]
+        const options = s.map(d => <Option value={d}>{d}</Option>);
         return (
             <div>
                 <Select
@@ -59,9 +64,9 @@ class SearchInput extends React.Component {
                 </Select>
                 <Button onClick={this.click}>查询</Button>
                 <div>{isLoading ? "loading..." : ""}</div>
-                <Descriptions style={{ display: this.state.data === [] ? 'none' : 'block' }} title="enodeb信息">
-                    {this.state.data}
-                </Descriptions></div>
+                <Table style={{ display: this.state.data === [] ? 'none' : 'block' }} columns={columns} dataSource={this.state.data} size="small"
+                    scroll={{ x: 1300 }} />
+            </div>
         );
     }
 }
