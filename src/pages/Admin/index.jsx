@@ -16,7 +16,7 @@ import Community from "../Community"
 import Enodeb from "../Enodeb"
 import Kpi from "../Kpi"
 import Prb from "../Prb"
-import C2I from '../C2I';
+import C2INew from '../C2INew';
 
 
 const { SubMenu } = Menu;
@@ -105,7 +105,7 @@ class Admin extends Component {
                                     <Route path="/admin/kpi" component={Kpi} />
                                     <Route path="/admin/enodeb" component={Enodeb} />
                                     <Route path="/admin/prb" component={Prb} />
-                                    <Route path="/admin/C2I" component={C2I} />
+                                    <Route path="/admin/C2I" component={C2INew} />
                                 </Switch>
                             </Content>
                         </Layout>
