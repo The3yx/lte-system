@@ -9,7 +9,6 @@ import { connect } from "react-redux";
 import { Link, Route, Switch, Redirect } from 'react-router-dom'
 
 import Person from "../Person"
-import SystemConfig from "../SystemConfig"
 import ServerConnection from '../ServerConnection'
 import DataImport from "../DataImport"
 import ExportData from "../ExportData"
@@ -66,10 +65,7 @@ class Admin extends Component {
                                 defaultOpenKeys={['sub1']}
                                 style={{ height: '100%', borderRight: 0 }}
                             >
-                                <SubMenu key="sub1" icon={<UserOutlined />} title="系统管理">
-                                    <Menu.Item key="/serverconnection"><Link to="/admin/serverconnection">数据库连接</Link></Menu.Item>
-                                    <Menu.Item key="/systemconfig"><Link to="/admin/systemconfig">数据库配置</Link></Menu.Item>
-                                </SubMenu>
+                                <Menu.Item key="/serverconnection"><Link to="/admin/serverconnection">数据库配置</Link></Menu.Item>
                                 <Menu.Item key="/person" style={{ display: userData.is_admin == true ? 'block' : 'none' }} ><Link to="/person">用户管理</Link></Menu.Item>
                                 <SubMenu key="sub3" icon={<NotificationOutlined />} title="数据管理">
                                     <Menu.Item key="/dataimport"><Link to="/admin/dataimport">数据导入</Link></Menu.Item>
@@ -109,7 +105,6 @@ class Admin extends Component {
                                     <Route path="/admin/kpi" component={Kpi} />
                                     <Route path="/admin/enodeb" component={Enodeb} />
                                     <Route path="/admin/prb" component={Prb} />
-                                    <Route path="/admin/systemconfig" component={SystemConfig} />
                                     <Route path="/admin/C2I" component={C2I} />
                                 </Switch>
                             </Content>
