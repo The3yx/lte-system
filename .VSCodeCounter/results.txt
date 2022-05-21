@@ -1,0 +1,66 @@
+Date : 2022-05-21 12:53:06
+Directory : d:\lte-system\src
+Total : 23 files,  1589 codes, 140 comments, 133 blanks, all 1862 lines
+
+Languages
++------------------+------------+------------+------------+------------+------------+
+| language         | files      | code       | comment    | blank      | total      |
++------------------+------------+------------+------------+------------+------------+
+| JavaScript React |         13 |      1,284 |         79 |         99 |      1,462 |
+| JavaScript       |          7 |        129 |         51 |         24 |        204 |
+| Less             |          2 |        128 |         10 |          4 |        142 |
+| CSS              |          1 |         48 |          0 |          6 |         54 |
++------------------+------------+------------+------------+------------+------------+
+
+Directories
++----------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                               | files      | code       | comment    | blank      | total      |
++----------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                  |         23 |      1,589 |        140 |        133 |      1,862 |
+| pages                                              |         15 |      1,412 |         89 |        103 |      1,604 |
+| pages\Admin                                        |          1 |        100 |          9 |          9 |        118 |
+| pages\C2I                                          |          1 |         22 |          0 |          5 |         27 |
+| pages\Community                                    |          1 |        124 |          6 |          8 |        138 |
+| pages\DataImport                                   |          1 |         93 |          7 |         12 |        112 |
+| pages\Enodeb                                       |          1 |        128 |          6 |          9 |        143 |
+| pages\ExportData                                   |          1 |         74 |          6 |         13 |         93 |
+| pages\Kpi                                          |          1 |        183 |          5 |         14 |        202 |
+| pages\Login                                        |          2 |        198 |         19 |          7 |        224 |
+| pages\NotFound                                     |          1 |          8 |          0 |          2 |         10 |
+| pages\Person                                       |          1 |        106 |          4 |          2 |        112 |
+| pages\Prb                                          |          1 |          8 |          1 |          2 |         11 |
+| pages\Register                                     |          2 |        238 |         21 |          9 |        268 |
+| pages\ServerConnection                             |          1 |        130 |          5 |         11 |        146 |
+| redux                                              |          4 |         76 |         29 |         16 |        121 |
+| utils                                              |          1 |         13 |         18 |          2 |         33 |
++----------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++----------------------------------------------------+------------------+------------+------------+------------+------------+
+| filename                                           | language         | code       | comment    | blank      | total      |
++----------------------------------------------------+------------------+------------+------------+------------+------------+
+| d:\lte-system\src\App.css                          | CSS              |         48 |          0 |          6 |         54 |
+| d:\lte-system\src\App.js                           | JavaScript       |         26 |          1 |          2 |         29 |
+| d:\lte-system\src\index.js                         | JavaScript       |         14 |          3 |          4 |         21 |
+| d:\lte-system\src\pages\Admin\index.jsx            | JavaScript React |        100 |          9 |          9 |        118 |
+| d:\lte-system\src\pages\C2I\index.jsx              | JavaScript React |         22 |          0 |          5 |         27 |
+| d:\lte-system\src\pages\Community\index.jsx        | JavaScript React |        124 |          6 |          8 |        138 |
+| d:\lte-system\src\pages\DataImport\index.jsx       | JavaScript React |         93 |          7 |         12 |        112 |
+| d:\lte-system\src\pages\Enodeb\index.jsx           | JavaScript React |        128 |          6 |          9 |        143 |
+| d:\lte-system\src\pages\ExportData\index.jsx       | JavaScript React |         74 |          6 |         13 |         93 |
+| d:\lte-system\src\pages\Kpi\index.jsx              | JavaScript React |        183 |          5 |         14 |        202 |
+| d:\lte-system\src\pages\Login\index.jsx            | JavaScript React |        134 |         14 |          5 |        153 |
+| d:\lte-system\src\pages\Login\index.less           | Less             |         64 |          5 |          2 |         71 |
+| d:\lte-system\src\pages\NotFound\index.jsx         | JavaScript React |          8 |          0 |          2 |         10 |
+| d:\lte-system\src\pages\Person\index.jsx           | JavaScript React |        106 |          4 |          2 |        112 |
+| d:\lte-system\src\pages\Prb\index.jsx              | JavaScript React |          8 |          1 |          2 |         11 |
+| d:\lte-system\src\pages\Register\index.jsx         | JavaScript React |        174 |         16 |          7 |        197 |
+| d:\lte-system\src\pages\Register\index.less        | Less             |         64 |          5 |          2 |         71 |
+| d:\lte-system\src\pages\ServerConnection\index.jsx | JavaScript React |        130 |          5 |         11 |        146 |
+| d:\lte-system\src\redux\actions.js                 | JavaScript       |         35 |         14 |          8 |         57 |
+| d:\lte-system\src\redux\constant.js                | JavaScript       |          4 |          1 |          1 |          6 |
+| d:\lte-system\src\redux\reducers.js                | JavaScript       |         30 |         12 |          5 |         47 |
+| d:\lte-system\src\redux\store.js                   | JavaScript       |          7 |          2 |          2 |         11 |
+| d:\lte-system\src\utils\storageUtils.js            | JavaScript       |         13 |         18 |          2 |         33 |
+| Total                                              |                  |      1,589 |        140 |        133 |      1,862 |
++----------------------------------------------------+------------------+------------+------------+------------+------------+
