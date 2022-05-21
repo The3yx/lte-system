@@ -1,0 +1,25 @@
+"filename", "language", "JavaScript", "CSS", "JavaScript React", "Less", "comment", "blank", "total"
+"d:\lte-system\src\App.css", "CSS", 0, 48, 0, 0, 0, 6, 54
+"d:\lte-system\src\App.js", "JavaScript", 26, 0, 0, 0, 1, 2, 29
+"d:\lte-system\src\index.js", "JavaScript", 14, 0, 0, 0, 3, 4, 21
+"d:\lte-system\src\pages\Admin\index.jsx", "JavaScript React", 0, 0, 100, 0, 9, 9, 118
+"d:\lte-system\src\pages\C2I\index.jsx", "JavaScript React", 0, 0, 22, 0, 0, 5, 27
+"d:\lte-system\src\pages\Community\index.jsx", "JavaScript React", 0, 0, 124, 0, 6, 8, 138
+"d:\lte-system\src\pages\DataImport\index.jsx", "JavaScript React", 0, 0, 93, 0, 7, 12, 112
+"d:\lte-system\src\pages\Enodeb\index.jsx", "JavaScript React", 0, 0, 128, 0, 6, 9, 143
+"d:\lte-system\src\pages\ExportData\index.jsx", "JavaScript React", 0, 0, 74, 0, 6, 13, 93
+"d:\lte-system\src\pages\Kpi\index.jsx", "JavaScript React", 0, 0, 183, 0, 5, 14, 202
+"d:\lte-system\src\pages\Login\index.jsx", "JavaScript React", 0, 0, 134, 0, 14, 5, 153
+"d:\lte-system\src\pages\Login\index.less", "Less", 0, 0, 0, 64, 5, 2, 71
+"d:\lte-system\src\pages\NotFound\index.jsx", "JavaScript React", 0, 0, 8, 0, 0, 2, 10
+"d:\lte-system\src\pages\Person\index.jsx", "JavaScript React", 0, 0, 106, 0, 4, 2, 112
+"d:\lte-system\src\pages\Prb\index.jsx", "JavaScript React", 0, 0, 8, 0, 1, 2, 11
+"d:\lte-system\src\pages\Register\index.jsx", "JavaScript React", 0, 0, 174, 0, 16, 7, 197
+"d:\lte-system\src\pages\Register\index.less", "Less", 0, 0, 0, 64, 5, 2, 71
+"d:\lte-system\src\pages\ServerConnection\index.jsx", "JavaScript React", 0, 0, 130, 0, 5, 11, 146
+"d:\lte-system\src\redux\actions.js", "JavaScript", 35, 0, 0, 0, 14, 8, 57
+"d:\lte-system\src\redux\constant.js", "JavaScript", 4, 0, 0, 0, 1, 1, 6
+"d:\lte-system\src\redux\reducers.js", "JavaScript", 30, 0, 0, 0, 12, 5, 47
+"d:\lte-system\src\redux\store.js", "JavaScript", 7, 0, 0, 0, 2, 2, 11
+"d:\lte-system\src\utils\storageUtils.js", "JavaScript", 13, 0, 0, 0, 18, 2, 33
+"Total", "-", 129, 48, 1284, 128, 140, 133, 1862
