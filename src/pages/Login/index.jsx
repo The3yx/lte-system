@@ -6,7 +6,7 @@ import React, { Component } from "react";
 //import logo from "../../assets/image/head.jpg";
 import { Form, Input, Button } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
-import { NavLink,Redirect } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 import "./index.less";
 import { connect } from "react-redux";
 import { login } from "../../redux/actions";
@@ -15,12 +15,10 @@ class Login extends Component {
   onFinish = async (values) => {
     console.log('call onFinish')
     const { username, password } = values;
-    try {
-      //调用异步请求，
-      this.props.login(username, password);
-    } catch (error) {
-      console.log("请求出错", error);
-    }
+
+    //调用异步请求，
+    this.props.login(username, password);
+
   };
   onFinishFailed = (values, errorFields, outOfDate) => {
     values.errorFields.map((x) => {
@@ -57,9 +55,6 @@ class Login extends Component {
             <h1>LTE-SYSTEM数据库管理系统</h1>
           </header>
           <section className="login-content">
-            <div className={errorMsg ? "error-msg show" : "error-msg"}>
-              {errorMsg}
-            </div>
             <h2>用户登录</h2>
 
             <Form

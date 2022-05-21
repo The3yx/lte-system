@@ -24,7 +24,8 @@ function userData(state=initUser,action){
             //console.log("验证")
             return action.userData
         case SHOW_ERROR_MSG:
-            const errorMsg = action.errorMsg
+            console.log("SHOW_ERROR_MSG")
+            const errorMsg = action
             return {...state,errorMsg} //不要直接修改原本的状态数据
         case RESET_USER:
             return {}

@@ -44,8 +44,9 @@ export const login = (username, password) => async (dispatch) => {
       dispatch(receiveUser(userData));
     },
     (err)=>{
-      console.log(err)
+      console.log("err",err)
       dispatch(showErrorMsg(err));
+      alert("用户名或密码错误!")
     }
   )
   .catch(
