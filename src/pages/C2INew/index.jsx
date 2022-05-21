@@ -2,6 +2,8 @@ import axios from 'axios'
 import React, { Component } from 'react'
 import { InputNumber, Checkbox, Space } from 'antd';
 
+
+//TODO:添加一点后端返回后，界面的样式
 export default class C2INew extends Component {
     state = {
         keyboard: true,
