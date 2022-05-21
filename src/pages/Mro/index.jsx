@@ -5,7 +5,7 @@ import axios from 'axios'
 
 export default class Mro extends Component {
     params = {
-        accept: ".csv,.xlsx",     //接受文件类型
+        accept: ".xml",     //接受文件类型
         customRequest: (config) => {
             //console.log(config)
             const data = config.data;
@@ -16,9 +16,6 @@ export default class Mro extends Component {
                 url: "/data/mro_parse",
                 headers: {
                     "Content-Type": "multipart/form-data",
-                },
-                params: {
-                    name: this.tableName
                 },
                 data: formData,
                 onUploadProgress: ({ total, loaded }) => {

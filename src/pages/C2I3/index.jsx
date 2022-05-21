@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, { Component } from 'react'
 import { InputNumber, Checkbox, Space } from 'antd';
 
-//注：C2I3需要C2INew的数据导入数据库
+//TODO:添加一点后端返回后，界面的样式
 export default class C2I3 extends Component {
     state = {
         keyboard:true,
