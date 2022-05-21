@@ -104,7 +104,7 @@ export default class DataImport extends Component {
               </Select>
               <Upload {...this.params}>
                 <Button icon={<UploadOutlined />}>Click to Upload</Button>
-            </Upload>
+              </Upload>
           </div>
         )
     }
