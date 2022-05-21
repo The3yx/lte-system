@@ -6,7 +6,6 @@ import { InputNumber, Checkbox, Space } from 'antd';
 export default class C2I3 extends Component {
     state = {
         keyboard:true,
-        setKeyboard:true,
         value:0
     }
 
