@@ -18,6 +18,7 @@ import Kpi from "../Kpi"
 import Prb from "../Prb"
 import C2INew from '../C2INew';
 import C2I3 from '../C2I3';
+import Mro from '../Mro';
 
 
 const { SubMenu } = Menu;
@@ -81,7 +82,7 @@ class Admin extends Component {
                                 <SubMenu key="sub5" icon={<NotificationOutlined />} title="业务分析">
                                     <Menu.Item key="/C2INew"><Link to="/admin/C2INew">主邻小区干扰分析</Link></Menu.Item>
                                     <Menu.Item key="/C2I3"><Link to="/admin/C2I3">重叠覆盖干扰小区三元组分析</Link></Menu.Item>
-                                    <Menu.Item key="11">option11</Menu.Item>
+                                    <Menu.Item key="/Mro"><Link to="/admin/Mro">Mro解析</Link></Menu.Item>
                                     <Menu.Item key="12">option12</Menu.Item>
                                 </SubMenu>
                             </Menu>
@@ -108,6 +109,7 @@ class Admin extends Component {
                                     <Route path="/admin/prb" component={Prb} />
                                     <Route path="/admin/C2INew" component={C2INew} />
                                     <Route path="/admin/C2I3" component={C2I3} />
+                                    <Route path="/admin/Mro" component={Mro}></Route>
                                 </Switch>
                             </Content>
                         </Layout>
