@@ -100,9 +100,9 @@ class Person extends Component {
         return (
             <div>
                 <InfiniteListExample token={this.props.userData.access_token} />
-                <InputNumber min={1} max={10} defaultValue={this.active} onChange={this.onChangeactive} />
+                <InputNumber min={1} defaultValue={this.active} onChange={this.onChangeactive} />
                 <Button onClick={this.act} type="primary">激活</Button>
-                <InputNumber min={1} max={10} defaultValue={this.delete} onChange={this.onChangedelete} />
+                <InputNumber min={1} defaultValue={this.delete} onChange={this.onChangedelete} />
                 <Button onClick={this.del} type="primary">删除</Button></div>
         )
     }
