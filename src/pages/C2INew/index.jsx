@@ -37,7 +37,7 @@ export default class C2INew extends Component {
                         }
                     })
                         .then(
-                            async (res) => {
+                            (res) => {
                                 
                                 fetch(res.data[0])
                                     .then(
