@@ -104,8 +104,8 @@ class SearchInput extends React.Component {
                     type: 'value',
                     name: this.state.type != "RCCConnRATE" ? (this.state.type + " 万") : ("RCCConnRATE %"),
                     min: 0,
-                    max: this.state.type != "RCCConnRATE" ? 10 : 100,
-                    interval: this.state.type != "RCCConnRATE" ? 1 : 10,
+                    max: this.state.type != "RCCConnRATE" ? 20 : 100,
+                    interval: this.state.type != "RCCConnRATE" ? 2 : 10,
                     axisLabel: {
                         formatter: '{value}'
                     }

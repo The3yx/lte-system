@@ -153,7 +153,7 @@ class SearchInput extends React.Component {
                     <Option key='15min' value='15min'>15min</Option>
                     <Option key='hour' value='hour'>hour</Option>
                 </Select>
-                <InputNumber min={0} max={60} onChange={this.num_change} placeholder={"pcb"} />
+                <InputNumber min={0} max={99} onChange={this.num_change} placeholder={"pcb"} />
                 <Select
                     showSearch
                     optionFilterProp="children"

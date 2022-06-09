@@ -5,7 +5,7 @@ import axios from 'axios'
 
 export default class Mro extends Component {
     params = {
-        accept: ".xml",     //接受文件类型
+        accept: ".zip",     //接受文件类型
         customRequest: (config) => {
             //console.log(config)
             const data = config.data;
@@ -23,8 +23,11 @@ export default class Mro extends Component {
                 }
             })
                 .then((res) => {
-                        console.log(res)
+                    if (res.status == 200) {
+                        alert("成功！")
                     }
+                    console.log(res)
+                }
                 )
                 .catch((err) => {
                     console.log(err)

@@ -29,8 +29,8 @@ class Login extends Component {
 
     if (!value) {
       return Promise.reject("密码必须输入");
-    } else if (value.length < 4) {
-      return Promise.reject("密码不能小于4");
+    } else if (value.length < 8) {
+      return Promise.reject("密码不能小于8");
     } else if (value.length > 12) {
       return Promise.reject("密码不能大于12");
     } else if (!/^[a-zA-Z0-9_]+$/.test(value)) {
