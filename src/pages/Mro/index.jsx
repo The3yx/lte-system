@@ -22,16 +22,18 @@ export default class Mro extends Component {
                     config.onProgress({ percent: Math.round((loaded / total) * 100).toFixed(2) }, config.file);
                 }
             })
-                .then((res) => {
-                    if (res.status == 200) {
-                        alert("成功！")
-                    }
-                    console.log(res)
+            .then((res) => {
+                console.log('res',res)
+                if (res.status == 200) {
+                    config.onSuccess();
+                    alert("上传成功")
                 }
-                )
-                .catch((err) => {
-                    console.log(err)
-                });
+            }
+            )
+            .catch((err) => {
+                config.onError()
+                console.log(err)
+            });
         },
     };
 
