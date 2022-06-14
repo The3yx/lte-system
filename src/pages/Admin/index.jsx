@@ -40,8 +40,8 @@ class Admin extends Component {
     }
     render() {
         const userData = this.props.userData;
-        console.log(userData)
-        console.log(2)
+        //console.log(userData)
+        //console.log(2)
         //如果内存没有存储user ==>当前没有登录  
         //TODO:有token还得发给邱桑鉴权，要不每次都能成功登录
         if (!userData.access_token) {

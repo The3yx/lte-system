@@ -64,6 +64,7 @@ export default class DataImport extends Component {
                 
               })
               .catch((err)=>{
+                config.onError()
                 console.log(err)
               })
               

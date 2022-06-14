@@ -5,7 +5,26 @@ import { Table, Tag} from 'antd';
 import Papa from "papaparse"
 
 
-//TODO:添加一点后端返回后，界面的样式
+
+function concat(arrays) {
+    // sum of individual array lengths
+    let totalLength = arrays.reduce((acc, value) => acc + value.length, 0);
+    
+    if (!arrays.length) return null;
+    
+        let result = new Uint8Array(totalLength);
+    
+        // for each array - copy it over result
+        // next array is copied right after the previous one
+        let length = 0;
+        for(let array of arrays) {
+                result.set(array, length);
+                length += array.length;
+        }
+    
+        return result;
+    }
+
 export default class C2INew extends Component {
     state = {
         data:[],
@@ -15,6 +34,25 @@ export default class C2INew extends Component {
 
     limitDecimals = (value) => {
         return value.replace(/^(0+)|[^\d]+/g, '');
+    }
+
+
+    read = (reader, data) => {
+        const decoder = new TextDecoder('utf-8');
+        reader.read()
+        .then(
+            (result) => {
+                const done = result.done
+                if(done){
+                    const concatArray = concat(data)
+                    data = decoder.decode(concatArray)
+                    data = Papa.parse(data, {header:true}).data
+                    this.setState({ data: data })
+                    return
+                }
+                data.push(result.value)
+                this.read(reader, data)
+            });
     }
 
     confirm = () => {
@@ -28,7 +66,6 @@ export default class C2INew extends Component {
         })
             .then(
                 (res) => {
-                    console.log(1111,res)
                     axios({
                         method:'get',
                         url:'/data/download',
@@ -42,20 +79,9 @@ export default class C2INew extends Component {
                                 fetch(res.data[0])
                                     .then(
                                         (response) => {
-                                            console.log(response)
-                                            let reader = response.body.getReader();
-                                            let decoder = new TextDecoder('utf-8');
-                            
-                                            reader.read()
-                                                .then(
-                                                    (result) => {
-                                                        //console.log(decoder.decode(result.value));
-                                                        const csv = decoder.decode(result.value)
-                                                        const parsedCsv = Papa.parse(csv, {header:true})
-                                                        this.setState({data:parsedCsv.data})
-                                                        //console.log(parsedCsv.meta)   ->表头
-
-                                                });
+                                            const reader = response.body.getReader();
+                                            
+                                            this.read(reader, [])
                                     });
 
                             }
