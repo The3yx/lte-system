@@ -17,12 +17,12 @@ export const showErrorMsg = (errorMsg) => ({ type: SHOW_ERROR_MSG, errorMsg });
 
 
 /* 退出登陆的同步action */
-/*
+
 export const logout = () => {
   storageUtils.deleteUser();
   return { type: RESET_USER };
 };
-*/
+
 
 
 /*  

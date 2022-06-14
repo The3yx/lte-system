@@ -4,9 +4,12 @@
 */
 import React, { Component } from 'react'
 import { Statistic, Row, Col, Button, InputNumber, Space } from 'antd';
-
+import { connect } from "react-redux";
+import { Redirect } from 'react-router-dom'
 import axios from 'axios'
-export default class SystemConnnection extends Component {
+import { logout } from "../../redux/actions";
+
+class SystemConnnection extends Component {
 
     state = {
         effect: 0,
@@ -15,6 +18,11 @@ export default class SystemConnnection extends Component {
         time: 0,
         dataset: [],
         isLoading: false
+    }
+
+    logout = ()=>{
+        this.props.logout()
+        return <Redirect path = '/admin'/>
     }
     click_effect = () => {
         axios.post(
@@ -141,7 +149,8 @@ export default class SystemConnnection extends Component {
               </Button></Space>
                     </Col>
                 </Row>
-                <Button>退出账号</Button></div>
+                <Button onClick={this.logout}>退出账号</Button></div>
         )
     }
 }
+export default connect((state) => ({ userData: state.userData }), {logout})(SystemConnnection);
