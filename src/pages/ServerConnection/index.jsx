@@ -105,41 +105,43 @@ export default class SystemConnnection extends Component {
             return <div>Loading...</div>
         }
         return (
-            <Row gutter={16}>
-                <Col span={12}>
-                    <Statistic title="有效缓存" value={this.state.dataset[0][1] + " 8kb"} />
-                    <Space>
-                        <InputNumber style={{ marginTop: 6, marginBottom: 16 }} min={10000} max={6000000} defaultValue={this.state.dataset[0][1]} onChange={this.effect_change} />
-                        <Button style={{ marginTop: 6, marginBottom: 16 }} onClick={this.click_effect} type="primary">
-                            change
+            <div>
+                <Row gutter={16}>
+                    <Col span={12}>
+                        <Statistic title="有效缓存" value={this.state.dataset[0][1] + " 8kb"} />
+                        <Space>
+                            <InputNumber style={{ marginTop: 6, marginBottom: 16 }} min={10000} max={6000000} defaultValue={this.state.dataset[0][1]} onChange={this.effect_change} />
+                            <Button style={{ marginTop: 6, marginBottom: 16 }} onClick={this.click_effect} type="primary">
+                                change
               </Button></Space>
-                </Col>
-                <Col span={12}>
-                    <Statistic title="最大连接数" value={this.state.dataset[2][1]} />
-                    <Space>
-                        <InputNumber style={{ marginTop: 6, marginBottom: 16 }} max={200} defaultValue={this.state.dataset[2][1]} onChange={this.connect_change} />
-                        <Button style={{ marginTop: 6, marginBottom: 16 }} onClick={this.click_connect} type="primary">
-                            change
+                    </Col>
+                    <Col span={12}>
+                        <Statistic title="最大连接数" value={this.state.dataset[2][1]} />
+                        <Space>
+                            <InputNumber style={{ marginTop: 6, marginBottom: 16 }} max={200} defaultValue={this.state.dataset[2][1]} onChange={this.connect_change} />
+                            <Button style={{ marginTop: 6, marginBottom: 16 }} onClick={this.click_connect} type="primary">
+                                change
               </Button></Space>
-                </Col>
-                <Col span={12}>
-                    <Statistic title="缓冲区大小" value={this.state.dataset[3][1] + " kb"} />
-                    <Space>
-                        <InputNumber style={{ marginTop: 6, marginBottom: 16 }} max={20000} defaultValue={this.state.dataset[3][1]} onChange={this.buffer_change} />
-                        <Button style={{ marginTop: 6, marginBottom: 16 }} onClick={this.click_buffer} type="primary">
-                            change
+                    </Col>
+                    <Col span={12}>
+                        <Statistic title="缓冲区大小" value={this.state.dataset[3][1] + " kb"} />
+                        <Space>
+                            <InputNumber style={{ marginTop: 6, marginBottom: 16 }} max={20000} defaultValue={this.state.dataset[3][1]} onChange={this.buffer_change} />
+                            <Button style={{ marginTop: 6, marginBottom: 16 }} onClick={this.click_buffer} type="primary">
+                                change
               </Button></Space>
-                </Col>
+                    </Col>
 
-                <Col span={12}>
-                    <Statistic title="数据库连接时长" value={this.state.dataset[4][1] + " s"} />
-                    <Space>
-                        <InputNumber style={{ marginTop: 6, marginBottom: 16 }} max={10000} defaultValue={this.state.dataset[4][1]} onChange={this.time_change} />
-                        <Button style={{ marginTop: 6, marginBottom: 16 }} onClick={this.click_time} type="primary">
-                            change
+                    <Col span={12}>
+                        <Statistic title="数据库连接时长" value={this.state.dataset[4][1] + " s"} />
+                        <Space>
+                            <InputNumber style={{ marginTop: 6, marginBottom: 16 }} max={10000} defaultValue={this.state.dataset[4][1]} onChange={this.time_change} />
+                            <Button style={{ marginTop: 6, marginBottom: 16 }} onClick={this.click_time} type="primary">
+                                change
               </Button></Space>
-                </Col>
-            </Row>
+                    </Col>
+                </Row>
+                <Button>退出账号</Button></div>
         )
     }
 }
