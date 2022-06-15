@@ -2,7 +2,7 @@
   "name": "lte-system",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://82.157.100.28:8000",
+  "proxy": "http://127.0.0.1:8000",
   "dependencies": {
     "@babel/plugin-proposal-class-properties": "^7.16.7",
     "@babel/plugin-proposal-decorators": "^7.17.8",
@@ -33,6 +33,7 @@
     "redux-thunk": "^2.4.1",
     "reqwest": "^2.0.5",
     "store": "^2.0.12",
+    "uuid": "^8.3.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

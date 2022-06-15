@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { InputNumber, Checkbox, Space } from 'antd';
 import { Table, Tag} from 'antd';
 import Papa from "papaparse"
-
+import {v4 as uuidv4} from 'uuid'
 
 
 function concat(arrays) {
@@ -29,7 +29,8 @@ export default class C2INew extends Component {
     state = {
         data:[],
         keyboard: true,
-        value: 0
+        value: 0,
+        isLoading:false
     }
 
     limitDecimals = (value) => {
@@ -47,7 +48,10 @@ export default class C2INew extends Component {
                     const concatArray = concat(data)
                     data = decoder.decode(concatArray)
                     data = Papa.parse(data, {header:true}).data
-                    this.setState({ data: data })
+                    data = data.map((item,index)=>{
+                        return {key:uuidv4(),...item}
+                    })
+                    this.setState({ data: data,isLoading:false })
                     return
                 }
                 data.push(result.value)
@@ -56,6 +60,7 @@ export default class C2INew extends Component {
     }
 
     confirm = () => {
+        this.setState({isLoading:true})
         const value = this.state.value
         axios({
             method: 'post',
@@ -104,6 +109,8 @@ export default class C2INew extends Component {
         const keyboard = this.state.keyboard
         var columns = []
         for (var j in this.state.data[0]) {
+            if(j === 'key')
+                continue
             columns.push({ title: j, dataIndex: j, key: j })
         }
         return (
@@ -132,6 +139,9 @@ export default class C2INew extends Component {
                 <button onClick={this.confirm}>
                     确认
                 </button>
+                <div>
+                    {this.state.isLoading?"isLoading...":""}
+                </div>
                 <Table
                     style={{display: this.state.data === [] ? 'none' : 'block' }}
                     columns={columns}

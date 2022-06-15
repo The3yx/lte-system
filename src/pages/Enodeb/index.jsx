@@ -8,6 +8,7 @@ import axios from 'axios'
 import { Select } from 'antd';
 import { Descriptions } from 'antd';
 import { Table, Tag, Space } from 'antd';
+import {v4 as uuidv4} from 'uuid'
 const { Option } = Select;
 class SearchInput extends React.Component {
 
@@ -32,9 +33,12 @@ class SearchInput extends React.Component {
             }
         }
         ).then(body => {
-            this.setState({ isLoading: false })
-            console.log(body.data)
-            this.setState({ data: body.data })
+            var data = []
+            data = body.data.map((item,index)=>{
+                return {key:uuidv4(), ...item}
+            })
+            this.setState({ isLoading: false ,data:data})
+
         })
             .catch((err) => {
                 console.log(err)
@@ -45,6 +49,8 @@ class SearchInput extends React.Component {
     render() {
         var columns = []
         for (var j in this.state.data[0]) {
+            if(j === 'key')
+                continue
             columns.push({ title: j, dataIndex: j, key: j })
         }
         const isLoading = this.state.isLoading

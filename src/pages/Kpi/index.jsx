@@ -38,11 +38,11 @@ class SearchInput extends React.Component {
         }
         ).then(body => {
             this.setState({ tablename: body.data })
-            console.log(this.state.tablename)
+            //console.log(this.state.tablename)
             var new_x = []
             var new_y = []
 
-            console.log(this.state.type)
+            //console.log(this.state.type)
             for (var i in this.state.tablename) {
                 new_x.push(this.state.tablename[i]["StartTime"])
                 if (this.state.type != "RCCConnRATE")
@@ -53,13 +53,13 @@ class SearchInput extends React.Component {
             }
             this.setState({ x: new_x, y: new_y })
 
-            console.log(this.state.x)
+            //console.log(this.state.x)
 
-            console.log(this.state.y)
+            //console.log(this.state.y)
         });
-        console.log(1)
+        //console.log(1)
         this.setState({ isLoading: true })
-        console.log(this.state)
+        //console.log(this.state)
     }
     onChange = (date, dateString) => {
         this.setState({ datestring: dateString })
@@ -125,7 +125,7 @@ class SearchInput extends React.Component {
 
         const isLoading = this.state.isLoading
         const options = this.props.table.map(d => <Option value={d["SECTOR_NAME"]}>{d["SECTOR_NAME"]}</Option>);
-        console.log(isLoading)
+        //console.log(isLoading)
         return (
             <div>
                 <Select
@@ -146,7 +146,7 @@ class SearchInput extends React.Component {
                     {options}
                 </Select><RangePicker showTime onChange={this.onChange} />
                 <Button onClick={this.click}>查询</Button>
-                <ReactEcharts style={{ display: this.state.isLoading == 0 ? 'none' : 'block' }} option={this.getOption()} style={{ width: '500px' }} /></div>
+                <ReactEcharts style={{ display: this.state.isLoading == 0 ? 'none' : 'block',  width: '500px' }} option={this.getOption()} /></div>
         );
     }
 }
@@ -168,7 +168,7 @@ export default class Kpi extends Component {
         }
         ).then(body => {
             this.setState({ tablename: body.data })
-            console.log(this.state.tablename)
+            //console.log(this.state.tablename)
         });
     }
 

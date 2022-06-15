@@ -15,7 +15,7 @@ const { Option } = Select;
 export default class DataImport extends Component {
 
     //tableList写死
-    tableList = ["tbcell","tbkpi","tbprb","tbmrodata", "tbc2i"]
+    tableList = ["tbcell","tbkpi","tbprb","tbmrodata", "tbc2i", 'tbmrodataexternal','tbc2inew','tbc2i3']
     id=""
     tableName = "";
     

@@ -16,7 +16,7 @@ export default class ExportData extends Component {
   state = {
     filePaths:[],
     tableName:"",
-    tableList:["tbcell","tbkpi","tbprb","tbmrodata", "tbc2i"]
+    tableList:["tbcell","tbkpi","tbprb","tbmrodata", "tbc2i", 'tbmrodataexternal','tbc2inew','tbc2i3']
   }
   //获取选择框输入
   getTable = (value)=>{
